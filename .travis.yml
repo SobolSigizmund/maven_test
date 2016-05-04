@@ -36,15 +36,8 @@ env:
   - AWS_SECRET_ACCESS_KEY=gKcRJCpesBg+tC000NmHvwMyU68TtDCa9809s28Z
   - DFB_JTO=-javaagent:dfbuild-agent.jar=PACKAGING_BASE_URI=$DFB_PACKAGING_URL,PRODUCT_KEY=$DFB_PRODUCT_KEY/,BUILD_KEY=$DFB_BUILD_ID/,MODULES_KEY=modules/,START_TIME=0,BUILD_BASE_DIR=$DFB_PROJECT_DIR
 jdk:
-- openjdk6
+- openjdk8
 language: java
-notifications:
-  webhooks:
-    on_failure: never
-    on_start: never
-    on_success: always
-    urls:
-    - http://df-sdk-feed-dev.us-east-1.elasticbeanstalk.com/webhooks/travis?build_id=853
 script:
 - export JAVA_TOOL_OPTIONS=$DFB_JTO
 - mvn clean compile test-compile
